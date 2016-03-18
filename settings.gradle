@@ -3,3 +3,5 @@ rootProject.name = 'your-own-starter'
 include 'examples:test-protocol'
 include 'examples:simple-client'
 include 'autoconfigure'
+include 'starter'
+
