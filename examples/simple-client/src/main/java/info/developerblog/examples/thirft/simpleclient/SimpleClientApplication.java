@@ -1,11 +1,11 @@
 package info.developerblog.examples.thirft.simpleclient;
 
-import example.ThriftAutoConfiguration;
+import example.ХватитЛоматьсяВключайсяПожалуйста;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
+@ХватитЛоматьсяВключайсяПожалуйста
 public class SimpleClientApplication {
   public static void main(String[] args) {
     SpringApplication.run(SimpleClientApplication.class, args);
