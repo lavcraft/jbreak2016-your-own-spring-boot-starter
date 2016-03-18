@@ -1,0 +1,9 @@
+apply plugin: 'groovy'
+
+dependencies {
+  provided 'org.apache.thrift:libthrift'
+  provided "org.springframework.boot:spring-boot-starter-web"
+  provided "org.springframework.boot:spring-boot-starter-actuator"
+
+  provided "org.springframework.boot:spring-boot-configuration-processor"
+}
