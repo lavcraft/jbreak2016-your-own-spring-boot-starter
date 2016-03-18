@@ -3,7 +3,7 @@ package info.developerblog.examples.thirft.simpleclient;
 import example.TInvestigatingService;
 import example.TName;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.transport.THttpClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ public class TGreetingServiceHandlerTests {
   @Test
   public void testSimpleCall() throws Exception {
     THttpClient tHttpClient = new THttpClient("http://localhost:" + port + "/investigator");
-    TBinaryProtocol tBinaryProtocol = new TBinaryProtocol(tHttpClient);
+    TCompactProtocol tBinaryProtocol = new TCompactProtocol(tHttpClient);
 
     TInvestigatingService.Client client = new TInvestigatingService.Client(tBinaryProtocol);
 
