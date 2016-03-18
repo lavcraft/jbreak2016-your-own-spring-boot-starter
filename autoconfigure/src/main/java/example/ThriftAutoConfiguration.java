@@ -11,7 +11,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.embedded.RegistrationBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -30,11 +32,13 @@ import java.util.Arrays;
 @Slf4j
 @Configuration
 @ConditionalOnClass(ThriftController.class)
+@EnableConfigurationProperties
+@ConditionalOnProperty(value = "thrift.server.enable", matchIfMissing = true)
 public class ThriftAutoConfiguration {
 
   @Bean
   @ConditionalOnMissingBean(TProtocolFactory.class)
-  TProtocolFactory tProtocolFactory(){
+  TProtocolFactory tProtocolFactory() {
     return new TBinaryProtocol.Factory();
   }
 
@@ -48,7 +52,7 @@ public class ThriftAutoConfiguration {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
       applicationContext.getBeansWithAnnotation(ThriftController.class)
-          .forEach((name, beanObject) -> reqisteringServlet(name,beanObject,servletContext));
+          .forEach((name, beanObject) -> reqisteringServlet(name, beanObject, servletContext));
     }
 
     private void reqisteringServlet(String name, Object beanObject, ServletContext servletContext) {

@@ -1,3 +1,6 @@
 spring:
   application:
     name: example
+
+
+thrift.server.enable: true
